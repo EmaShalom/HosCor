@@ -5,13 +5,9 @@
 # First deploy steps:
 #   1. Push this repo to GitHub and connect it to Render.
 #   2. Render will create all three services automatically.
-#   3. After the backend is live, copy its URL (e.g. https://hoscor-backend.onrender.com)
-#      and set VITE_API_BASE on the frontend service in the Render dashboard:
-#        VITE_API_BASE = https://hoscor-backend.onrender.com
-#      Then redeploy the frontend.
-#   4. Copy the frontend URL and set CORS_ALLOWED_ORIGINS on the backend service:
-#        CORS_ALLOWED_ORIGINS = https://hoscor-frontend.onrender.com
-#      Then redeploy the backend.
+#   3. If your Render service names differ from the defaults (hoscor-backend /
+#      hoscor-frontend), update VITE_API_BASE and CORS_ALLOWED_ORIGINS in the
+#      Render dashboard to match the actual service URLs, then redeploy.
 #
 # Note: Render free-tier web services spin down after 15 min of inactivity.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -55,10 +51,8 @@ services:
           property: password
       - key: JWT_SECRET
         generateValue: true
-      # Set this to https://<your-frontend-name>.onrender.com after frontend is deployed
       - key: CORS_ALLOWED_ORIGINS
-        value: http://localhost:5173
-        sync: false
+        value: https://hoscor-frontend.onrender.com
 
   # ── Frontend (Static Site) ──────────────────────────────────────────────────
   - type: web
@@ -72,6 +66,5 @@ services:
         source: /*
         destination: /index.html
     envVars:
-      # Set this to https://<your-backend-name>.onrender.com after backend is deployed
       - key: VITE_API_BASE
-        sync: false
+        value: https://hoscor-backend.onrender.com
