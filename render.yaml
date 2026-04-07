@@ -1,0 +1,77 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# HosCor — Render Blueprint
+# Deploys: PostgreSQL database + Spring Boot backend + React frontend (static)
+#
+# First deploy steps:
+#   1. Push this repo to GitHub and connect it to Render.
+#   2. Render will create all three services automatically.
+#   3. After the backend is live, copy its URL (e.g. https://hoscor-backend.onrender.com)
+#      and set VITE_API_BASE on the frontend service in the Render dashboard:
+#        VITE_API_BASE = https://hoscor-backend.onrender.com
+#      Then redeploy the frontend.
+#   4. Copy the frontend URL and set CORS_ALLOWED_ORIGINS on the backend service:
+#        CORS_ALLOWED_ORIGINS = https://hoscor-frontend.onrender.com
+#      Then redeploy the backend.
+#
+# Note: Render free-tier web services spin down after 15 min of inactivity.
+# ─────────────────────────────────────────────────────────────────────────────
+
+databases:
+  - name: hoscor-db
+    databaseName: hoscor
+    user: hoscor
+    plan: free
+
+services:
+
+  # ── Backend (Docker) ────────────────────────────────────────────────────────
+  - type: web
+    name: hoscor-backend
+    runtime: docker
+    dockerfilePath: ./hoscor-backend/Dockerfile
+    dockerContext: ./hoscor-backend
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: hoscor-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: hoscor-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: hoscor-db
+          property: database
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: hoscor-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: hoscor-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+      # Set this to https://<your-frontend-name>.onrender.com after frontend is deployed
+      - key: CORS_ALLOWED_ORIGINS
+        value: http://localhost:5173
+        sync: false
+
+  # ── Frontend (Static Site) ──────────────────────────────────────────────────
+  - type: web
+    name: hoscor-frontend
+    runtime: static
+    buildCommand: cd hoscor-frontend && npm ci && npm run build
+    staticPublishPath: ./hoscor-frontend/dist
+    pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Set this to https://<your-backend-name>.onrender.com after backend is deployed
+      - key: VITE_API_BASE
+        sync: false

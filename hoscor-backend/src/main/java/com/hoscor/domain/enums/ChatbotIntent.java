@@ -1,0 +1,138 @@
+package com.hoscor.domain.enums;
+
+public enum ChatbotIntent {
+    // Bed intelligence
+    BED_COUNT,
+    BED_SATURATION,
+    BED_RESERVED,
+    BED_CLEANING,
+    BED_FORECAST,
+
+    // Waiting patients
+    WAITING_COUNT,
+    WAITING_URGENT,
+    WAITING_BY_DIAG,
+    WAITING_PRIORITY,
+
+    // Unit matching
+    UNIT_MATCHING,
+    UNIT_CAPACITY,
+
+    // Transfers
+    TRANSFER_STATUS,
+    TRANSFER_LIST,
+    TRANSFER_DELAYS,
+
+    // Alerts
+    ALERT_CRITICAL,
+    ALERT_SATURATION,
+    ALERT_WAIT_TOO_LONG,
+
+    // Stats
+    STATS_OCCUPANCY,
+    STATS_ADMISSIONS,
+    STATS_LOS,
+    STATS_DAMA,
+    STATS_TRENDS,
+
+    // Forecasts
+    FORECAST_TODAY,
+    FORECAST_TOMORROW,
+    FORECAST_RISK,
+
+    // Actions
+    ACTION_ASSIGN_BED,
+    ACTION_RESERVE_BED,
+    ACTION_CREATE_TRANSFER,
+    ACTION_MARK_CRITICAL,
+    ACTION_UPDATE_TRANSFER,
+
+    // Operational
+    OPS_BOTTLENECK,
+    OPS_BLOCKER,
+    OPS_WHO_INTERVENE,
+
+    // AI
+    AI_STRATEGY,
+    AI_DETERIORATION,
+    AI_OPTIMIZE,
+    AI_SIMULATE,
+    AI_REORGANIZE,
+
+    // Patient search & general
+    PATIENT_SEARCH,
+    GENERAL_QUESTION,
+    UNKNOWN,
+
+    // Onboarding / Navigation
+    ONBOARDING_HELP,
+    ONBOARDING_NAVIGATE,
+
+    // Error troubleshooting
+    ERROR_ASSIGN_BED,
+    ERROR_TRANSFER,
+    ERROR_LOGIN,
+    ERROR_GENERAL,
+
+    // Hygiene / Cleaning
+    HYGIENE_STATUS,
+    HYGIENE_ROTATION,
+
+    // Patient lifecycle
+    PATIENT_DISCHARGE,
+    PATIENT_CREATE,
+
+    // Morning coordination
+    MORNING_BRIEFING,
+
+    // Diagnosis → unit lookup
+    DIAGNOSIS_LOOKUP,
+
+    // Guide — Beds
+    GUIDE_ASSIGN_BED,
+    GUIDE_ADMIT_PATIENT,
+    GUIDE_CHANGE_BED,
+    GUIDE_FREE_BED,
+    GUIDE_MARK_OCCUPIED,
+    GUIDE_VIEW_BEDS,
+    GUIDE_RESERVE_BED,
+    GUIDE_CANCEL_RESERVATION,
+
+    // Guide — Waiting / Stretchers
+    GUIDE_ADD_WAITING,
+    GUIDE_PRIORITIZE,
+    GUIDE_ASSIGN_UNIT,
+    GUIDE_VIEW_WAITING,
+    GUIDE_FILTER_URGENCY,
+    GUIDE_UPDATE_STATUS,
+
+    // Guide — Transfers
+    GUIDE_CREATE_TRANSFER,
+    GUIDE_OUTGOING_TRANSFER,
+    GUIDE_ASSIGN_INCOMING,
+    GUIDE_RESERVE_TRANSFER,
+    GUIDE_CHANGE_TRANSFER,
+    GUIDE_CANCEL_TRANSFER,
+    GUIDE_CONFIRM_ARRIVAL,
+
+    // Guide — Alerts
+    GUIDE_HANDLE_ALERT,
+    GUIDE_VIEW_ALERTS,
+    GUIDE_RESOLVE_ALERT,
+    GUIDE_IDENTIFY_URGENT,
+    GUIDE_CHECK_SATURATION,
+
+    // Guide — Stats / Dashboard
+    GUIDE_READ_DASHBOARD,
+    GUIDE_WEEK_STATS,
+    GUIDE_ANALYZE_ADMISSIONS,
+    GUIDE_IDENTIFY_DIFFICULT,
+    GUIDE_ANTICIPATE_BEDS,
+
+    // Guide — Advanced scenarios
+    GUIDE_CRITICAL_WAIT,
+    GUIDE_BED_SHORTAGE,
+    GUIDE_MULTI_PRIORITY,
+    GUIDE_CHOOSE_UNIT,
+    GUIDE_OPTIMIZE
+}
