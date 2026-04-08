@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import axios from 'axios'
+import client from '../api/client'
 
 export interface AuthUser {
   username: string
@@ -17,7 +17,7 @@ export function useAuth() {
   })
 
   const login = useCallback(async (username: string, password: string) => {
-    const res = await axios.post('/api/auth/login', { username, password })
+    const res = await client.post('/auth/login', { username, password })
     const { token: t, username: u, role: r, unit: unit } = res.data.data
     const authUser: AuthUser = { username: u, role: r, unit: unit ?? null }
     localStorage.setItem('hoscor_token', t)
