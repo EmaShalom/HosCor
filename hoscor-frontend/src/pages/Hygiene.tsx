@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQueries, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchUnitBeds, updateBedState } from '../api/beds'
 import KPICard from '../components/common/KPICard'
 import StatusBadge from '../components/common/StatusBadge'
@@ -40,13 +40,13 @@ const UNIT_FULL: Record<string, string> = {
 const UNITS = ['2N', '2S', '3N', '3S', 'URG', 'CHIR']
 
 function useCombinedBeds() {
-  const queries = UNITS.map(unit =>
-    useQuery({
+  const queries = useQueries({
+    queries: UNITS.map(unit => ({
       queryKey: ['unit-beds', unit],
       queryFn: () => fetchUnitBeds(unit),
       refetchInterval: 60_000,
-    })
-  )
+    }))
+  })
   const isLoading = queries.some(q => q.isLoading)
   const beds: Array<Bed & { unit: string }> = queries.flatMap((q, i) =>
     (q.data ?? []).map(b => ({ ...b, unit: b.unit || UNITS[i] }))
