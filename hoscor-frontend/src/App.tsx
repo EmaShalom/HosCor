@@ -188,7 +188,7 @@ export default function App() {
         <Route
           path="hygiene"
           element={
-            <RoleRoute allowed={[ROLES.ADMIN, ROLES.HYGIENE]} fallback={defaultFallback}>
+            <RoleRoute allowed={[ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.HYGIENE]} fallback={defaultFallback}>
               <Hygiene />
             </RoleRoute>
           }

@@ -103,7 +103,7 @@ export default function ChatbotWidget() {
           <div className="bg-[#1E3A5F] px-4 py-3 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full" />
-              <span className="text-white font-semibold text-sm">Assistant IA — CisssCoord</span>
+              <span className="text-white font-semibold text-sm">Assistant IA — HosCor</span>
             </div>
             <button
               onClick={() => setOpen(false)}

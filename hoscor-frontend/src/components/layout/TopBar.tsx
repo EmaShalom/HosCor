@@ -30,7 +30,7 @@ export default function TopBar() {
   }, [])
 
   const segment = location.pathname.replace('/', '')
-  const pageTitle = PAGE_TITLES[segment] ?? 'CisssCoord'
+  const pageTitle = PAGE_TITLES[segment] ?? 'HosCor'
 
   const timeStr = format(time, 'HH:mm:ss')
   const dateStr = format(time, "EEEE d MMMM yyyy", { locale: fr })

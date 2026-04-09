@@ -1,6 +1,6 @@
-# CisssCoord — Chatbot System Documentation
+# HosCor — Chatbot System Documentation
 
-> Complete technical documentation for the AI assistant embedded in the CisssCoord hospital coordination platform.  
+> Complete technical documentation for the AI assistant embedded in the HosCor hospital coordination platform.  
 > Based strictly on the actual implementation — no features are described that do not exist in the code.
 
 ---
@@ -37,7 +37,7 @@
 
 ## 1. Overview
 
-The CisssCoord chatbot is a French-language conversational assistant embedded in every page of the application. It is accessible via a floating button in the bottom-right corner of the screen.
+The HosCor chatbot is a French-language conversational assistant embedded in every page of the application. It is accessible via a floating button in the bottom-right corner of the screen.
 
 **What it does:**
 - Answers questions about bed availability, patient status, transfers, and alerts using live database data

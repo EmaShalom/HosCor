@@ -38,7 +38,7 @@ export default function ChatbotMessages({
     <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
       {messages.length === 0 && (
         <div className="text-center text-gray-400 text-xs mt-8">
-          <p className="font-medium mb-1">Assistant IA CisssCoord</p>
+          <p className="font-medium mb-1">Assistant IA HosCor</p>
           <p>Posez vos questions sur les lits, patients, transferts...</p>
         </div>
       )}

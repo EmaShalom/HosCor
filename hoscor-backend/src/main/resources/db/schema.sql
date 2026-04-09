@@ -1,5 +1,5 @@
 -- ============================================================
--- CisssCoord Hospital Coordination Schema
+-- HosCor Hospital Coordination Schema
 -- ============================================================
 
 -- app_users

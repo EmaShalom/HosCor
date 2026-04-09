@@ -70,7 +70,7 @@ export default function AffichageEtage() {
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-3">
-              <span className="text-purple-400 font-bold text-lg">CisssCoord</span>
+              <span className="text-purple-400 font-bold text-lg">HosCor</span>
               <span className="text-gray-400 text-sm">|</span>
               <span className="text-white font-semibold">{unitLabel}</span>
             </div>

@@ -210,14 +210,14 @@ function buildReportHtml(report: typeof REPORTS[number], data: ReportData): stri
     <html lang="fr">
     <head>
       <meta charset="UTF-8" />
-      <title>${report.title} — CisssCoord</title>
+      <title>${report.title} — HosCor</title>
       <style>${styles}</style>
     </head>
     <body>
       <h1>${report.icon} ${report.title}</h1>
-      <p class="subtitle">CISSS de l'Outaouais · Généré le ${now}</p>
+      <p class="subtitle">Application de gestion hospitalière · Généré le ${now}</p>
       ${content}
-      <div class="footer">CisssCoord — Système de coordination hospitalière · Confidentiel · ${now}</div>
+      <div class="footer">HosCor — Système de coordination hospitalière · Confidentiel · ${now}</div>
     </body>
     </html>
   `
@@ -267,10 +267,10 @@ function buildShiftReportHtml(report: ShiftReportData): string {
 
   return `<!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8"/><title>Rapport de quart — CisssCoord</title><style>${styles}</style></head>
+<head><meta charset="UTF-8"/><title>Rapport de quart — HosCor</title><style>${styles}</style></head>
 <body>
   <h1>🕐 Rapport de quart — ${report.shiftLabel}</h1>
-  <p class="subtitle">CISSS de l'Outaouais · Date: ${report.date} · Période: ${report.startTime} → ${report.endTime} · Généré le ${now}</p>
+  <p class="subtitle">Application de gestion hospitalière · Date: ${report.date} · Période: ${report.startTime} → ${report.endTime} · Généré le ${now}</p>
 
   <div class="kpi-grid">
     <div class="kpi"><div class="kpi-value">${report.admissionCount}</div><div class="kpi-label">Admissions</div></div>
@@ -351,7 +351,7 @@ function buildShiftReportHtml(report: ShiftReportData): string {
     </tbody>
   </table>`}
 
-  <footer>CisssCoord — Système de coordination hospitalière · Confidentiel · ${now}</footer>
+  <footer>HosCor — Système de coordination hospitalière · Confidentiel · ${now}</footer>
 </body>
 </html>`
 }

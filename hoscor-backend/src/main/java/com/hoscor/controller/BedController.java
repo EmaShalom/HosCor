@@ -8,6 +8,7 @@ import com.hoscor.domain.repository.BedRepository;
 import com.hoscor.domain.repository.PatientRepository;
 import com.hoscor.dto.ApiResponse;
 import com.hoscor.dto.BedDto;
+import com.hoscor.dto.HygieneBedDto;
 import com.hoscor.dto.UnitSummaryDto;
 import com.hoscor.service.BedAssignmentService;
 import com.hoscor.service.DashboardService;
@@ -54,6 +55,61 @@ public class BedController {
 
         List<BedDto> result = beds.stream()
                 .map(bed -> BedDto.from(bed, patientNames.get(bed.getBedNumber())))
+                .toList();
+
+        return ApiResponse.ok(result);
+    }
+
+    @GetMapping("/hygiene")
+    @PreAuthorize("hasAnyRole('ADMIN','COORDONNATEUR','HYGIENE')")
+    public ApiResponse<List<HygieneBedDto>> getHygieneBeds() {
+        // Beds waiting for or undergoing cleaning (CLEANING, READY, or OCCUPIED without an admitted patient)
+        Map<String, String> admittedByBed = patientRepository.findByStatus(PatientStatus.ADMITTED)
+                .stream()
+                .filter(p -> p.getBedNumber() != null && p.getUnit() != null)
+                .collect(Collectors.toMap(
+                        p -> p.getUnit() + ":" + p.getBedNumber(),
+                        p -> p.getFirstName() + " " + p.getLastName(),
+                        (a, b) -> a
+                ));
+
+        List<Bed> hygieneBeds = bedRepository.findAll().stream()
+                .filter(b -> switch (b.getState()) {
+                    case CLEANING, READY -> true;
+                    case OCCUPIED -> !admittedByBed.containsKey(b.getUnit() + ":" + b.getBedNumber());
+                    default -> false;
+                })
+                .toList();
+
+        // Most recently discharged patient per bed position
+        Map<String, Patient> dischargedByBed = patientRepository.findByStatus(PatientStatus.CONGEDIE)
+                .stream()
+                .filter(p -> p.getBedNumber() != null && p.getUnit() != null)
+                .collect(Collectors.toMap(
+                        p -> p.getUnit() + ":" + p.getBedNumber(),
+                        p -> p,
+                        (a, b) -> {
+                            if (a.getDischargeDate() == null) return b;
+                            if (b.getDischargeDate() == null) return a;
+                            return a.getDischargeDate().isAfter(b.getDischargeDate()) ? a : b;
+                        }
+                ));
+
+        List<HygieneBedDto> result = hygieneBeds.stream()
+                .map(bed -> {
+                    Patient p = dischargedByBed.get(bed.getUnit() + ":" + bed.getBedNumber());
+                    return HygieneBedDto.builder()
+                            .id(bed.getId())
+                            .unit(bed.getUnit())
+                            .bedNumber(bed.getBedNumber())
+                            .state(bed.getState())
+                            .mrdNumber(p != null ? p.getMrdNumber() : null)
+                            .patientAge(p != null ? p.getAge() : null)
+                            .dischargeDate(p != null && p.getDischargeDate() != null
+                                    ? p.getDischargeDate().toLocalDate().toString() : null)
+                            .diagnosis(p != null ? p.getDiagnosis() : null)
+                            .build();
+                })
                 .toList();
 
         return ApiResponse.ok(result);

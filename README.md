@@ -1,6 +1,6 @@
 # HosCor — Système de coordination hospitalière
 
-> Plateforme de coordination des lits et des flux patients pour le CISSS de l'Outaouais (Québec).  
+> Plateforme de coordination des lits et des flux patients pour le Application de gestion hospitalière (Québec).  
 > Application full-stack Java/React avec intelligence artificielle intégrée, conçue pour les équipes de soins en milieu hospitalier.
 
 ---
@@ -811,4 +811,4 @@ Les comptes suivants sont créés automatiquement lors de l'initialisation (`see
 
 ---
 
-*Système développé pour le CISSS de l'Outaouais — Usage interne uniquement.*
+*Système développé pour le Application de gestion hospitalière — Usage interne uniquement.*

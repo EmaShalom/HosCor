@@ -1,8 +1,8 @@
-# CisssCoord — Complete Interface Documentation
+# HosCor — Complete Interface Documentation
 ## Frontend Development Prompt
 
-> **Application**: CisssCoord  
-> **Organization**: CISSS de l'Outaouais  
+> **Application**: HosCor  
+> **Organization**: Application de gestion hospitalière  
 > **Type**: Hospital bed and patient coordination dashboard  
 > **Target Stack**: React + TypeScript + Tailwind CSS  
 > **Language**: Canadian French (UI labels kept as-is from screenshots)  
@@ -104,8 +104,8 @@ Reused on almost every page, always in a horizontal row of 4 or 5:
 
 ```
 ┌─────────────────────────┐
-│ 🟣 CisssCoord           │  16px bold white
-│    CISSS de l'Outaouais │  11px light gray
+│ 🟣 HosCor           │  16px bold white
+│    Application de gestion hospitalière │  11px light gray
 ├─────────────────────────┤
 │ Semaine du 7–13 avr 2025│  13px bold light blue #60A5FA
 ├─────────────────────────┤
@@ -540,7 +540,7 @@ Each tile is large (~200×200px), colored background by status:
 ### Specific Header (background `#1A2535`)
 
 ```
-🟣 CisssCoord  |  2e Nord – Cardiologie                    |  13 h 36 min 18 s  | [Updates 15]
+🟣 HosCor  |  2e Nord – Cardiologie                    |  13 h 36 min 18 s  | [Updates 15]
                    Affichage poste infirmier · Temps réel  |  mardi 31 mars 2026 |  [  5  ] ←green
 ```
 - HH:MM:SS timer: 32px bold white, updated every second
@@ -683,7 +683,7 @@ Columns:
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │ ☀️ Réunion de coordination matinale                               │
-│ Lundi 13 avril 2025 · 08h00 · CISSS de l'Outaouais               │
+│ Lundi 13 avril 2025 · 08h00 · Application de gestion hospitalière               │
 │                                                                  │
 │   60              41           68%            7                  │
 │   Patients        Present      Occupancy      Planned            │
@@ -955,4 +955,4 @@ Row structure:
 
 ---
 
-*Complete documentation — 11/11 interfaces documented — CisssCoord, CISSS de l'Outaouais, 2025*
+*Complete documentation — 11/11 interfaces documented — HosCor, Application de gestion hospitalière, 2025*

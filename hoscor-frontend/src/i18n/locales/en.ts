@@ -1,6 +1,6 @@
 const en = {
   common: {
-    appName: 'CisssCoord',
+    appName: 'HosCor',
     appSubtitle: 'CISSS de l\'Outaouais',
     loading: 'Loading…',
     error: 'An error occurred.',

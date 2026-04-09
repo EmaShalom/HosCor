@@ -1,5 +1,5 @@
 -- ============================================================
--- CisssCoord Seed Data — Quebec Hospital
+-- HosCor Seed Data — Quebec Hospital
 -- NOTE: All seed users have password = "password"
 -- BCrypt hash: $2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.ujaWTNf6a
 -- ============================================================

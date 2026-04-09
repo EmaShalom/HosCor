@@ -114,9 +114,9 @@ export default function Sidebar() {
       <div className="px-4 py-5 border-b border-white/10">
         <div className="flex items-center gap-2 mb-1">
           <Activity className="text-brand-light w-5 h-5" />
-          <span className="text-white font-bold text-lg tracking-tight">CisssCoord</span>
+          <span className="text-white font-bold text-lg tracking-tight">HosCor</span>
         </div>
-        <p className="text-white/50 text-xs">CISSS de l'Outaouais</p>
+        <p className="text-white/50 text-xs">Application de gestion hospitalière</p>
         <p className="text-white/30 text-xs mt-1">{weekLabel}</p>
       </div>
 
@@ -152,7 +152,7 @@ export default function Sidebar() {
             {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.URGENCE, ROLES.COMMIS_ETAGE, ROLES.CHEF_UNITE) && (
               <NavItem to="/affichage-etage" icon={<Monitor size={16} />} label="Affichage Étage" />
             )}
-            {can(ROLES.ADMIN, ROLES.HYGIENE) && (
+            {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.HYGIENE) && (
               <NavItem to="/hygiene" icon={<Sparkles size={16} />} label="Hygiène & salubrité" />
             )}
             {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE) && (

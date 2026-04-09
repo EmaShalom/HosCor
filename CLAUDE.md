@@ -1,6 +1,6 @@
-# CisssCoord — CLAUDE.md
+# HosCor — CLAUDE.md
 
-Hospital bed and patient coordination system for CISSS de l'Outaouais (Quebec).
+Hospital bed and patient coordination system for Application de gestion hospitalière (Quebec).
 All user-facing strings and UI labels are in **Canadian French**.
 
 ## Stack

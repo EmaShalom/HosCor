@@ -519,7 +519,7 @@ public class GuideService {
                     .build();
 
             case ONBOARDING_HELP -> GuideResponse.builder()
-                    .title("Bienvenue dans CisssCoord — Guide de démarrage")
+                    .title("Bienvenue dans HosCor — Guide de démarrage")
                     .section("Vue d'Ensemble")
                     .sectionRoute("/vue-ensemble")
                     .context("Utilisez ce guide si vous démarrez avec le système ou si vous avez besoin d'un rappel des fonctions principales.")
@@ -542,7 +542,7 @@ public class GuideService {
                     .build();
 
             case ONBOARDING_NAVIGATE -> GuideResponse.builder()
-                    .title("Comment naviguer dans CisssCoord")
+                    .title("Comment naviguer dans HosCor")
                     .section("Vue d'Ensemble")
                     .sectionRoute("/vue-ensemble")
                     .context("Le menu latéral donne accès à toutes les sections. Chaque section a un rôle précis.")

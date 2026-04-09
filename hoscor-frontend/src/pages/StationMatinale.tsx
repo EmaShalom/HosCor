@@ -100,7 +100,7 @@ export default function StationMatinale() {
           <h1 className="text-2xl font-bold">Réunion de coordination matinale</h1>
         </div>
         <p className="text-sm text-white/75 mb-6">
-          {dateStr} · 08h00 · CISSS de l'Outaouais
+          {dateStr} · 08h00 · Application de gestion hospitalière
         </p>
         <div className="grid grid-cols-4 gap-8">
           {[
