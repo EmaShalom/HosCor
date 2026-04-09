@@ -136,40 +136,34 @@ export default function Sidebar() {
           </>
         )}
 
-        {/* ── Clinique ── */}
-        {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.URGENCE, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE, ROLES.COMMIS_ETAGE) && (
+        {/* ── Interfaces Métier ── */}
+        {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.URGENCE, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE, ROLES.COMMIS_ETAGE, ROLES.HYGIENE) && (
           <>
-            <SectionLabel label="Clinique" />
+            <SectionLabel label="Interfaces Métier" />
+            {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE, ROLES.COMMIS_ETAGE) && (
+              <NavItem to="/admissions" icon={<ClipboardList size={16} />} label="Admissions & dossiers" />
+            )}
             {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.URGENCE) && (
               <NavItem to="/urgence" icon={<AlertTriangle size={16} />} label="Urgence" badge={urgenceCount} />
             )}
             {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE, ROLES.COMMIS_ETAGE) && (
               <NavItem to="/gestion-lits" icon={<BedDouble size={16} />} label="Gestion des Lits" />
             )}
-            {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.CHEF_UNITE) && (
-              <NavItem to="/transferts" icon={<ArrowLeftRight size={16} />} label="Transferts" badge={transferCount} />
-            )}
-            {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE, ROLES.COMMIS_ETAGE) && (
-              <NavItem to="/admissions" icon={<ClipboardList size={16} />} label="Admissions" />
-            )}
-          </>
-        )}
-
-        {/* ── Affichage ── */}
-        {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.URGENCE, ROLES.COMMIS_ETAGE, ROLES.CHEF_UNITE, ROLES.HYGIENE) && (
-          <>
-            <SectionLabel label="Affichage" />
             {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.URGENCE, ROLES.COMMIS_ETAGE, ROLES.CHEF_UNITE) && (
               <NavItem to="/affichage-etage" icon={<Monitor size={16} />} label="Affichage Étage" />
             )}
             {can(ROLES.ADMIN, ROLES.HYGIENE) && (
-              <NavItem to="/hygiene" icon={<Sparkles size={16} />} label="Hygiène" />
+              <NavItem to="/hygiene" icon={<Sparkles size={16} />} label="Hygiène & salubrité" />
             )}
             {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.GESTIONNAIRE_LIT, ROLES.CHEF_UNITE) && (
               <NavItem to="/station-matinale" icon={<Sunrise size={16} />} label="Station Matinale" />
             )}
+            {can(ROLES.ADMIN, ROLES.COORDONNATEUR, ROLES.CHEF_UNITE) && (
+              <NavItem to="/transferts" icon={<ArrowLeftRight size={16} />} label="Transferts" badge={transferCount} />
+            )}
           </>
         )}
+
 
         {/* ── Intelligence ── */}
         {can(ROLES.ADMIN, ROLES.COORDONNATEUR) && (

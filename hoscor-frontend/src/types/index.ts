@@ -8,6 +8,17 @@ export interface Bed {
   reservedUntil?: string
 }
 
+export interface HygieneBed {
+  id: number
+  unit: string
+  bedNumber: string
+  state: 'CLEANING' | 'READY' | 'OCCUPIED'
+  mrdNumber?: string
+  patientAge?: number
+  dischargeDate?: string
+  diagnosis?: string
+}
+
 export interface Patient {
   id: number
   mrdNumber: string

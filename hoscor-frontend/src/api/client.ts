@@ -1,8 +1,7 @@
 import axios from 'axios'
 
-// In development (npm run dev): VITE_API_BASE unset → '/api' proxied by Vite to localhost:8080
-// In Docker Compose: VITE_API_BASE unset (nginx proxies /api → backend:8080)
-// In Render production: VITE_API_BASE='https://hoscor-backend.onrender.com' → baseURL becomes that host + '/api'
+// Dev (npm run dev): '/api' proxied by Vite to localhost:8080
+// Docker Compose: '/api' proxied by nginx to backend:8080
 const base = import.meta.env.VITE_API_BASE
 const baseURL = base ? `${base}/api` : '/api'
 

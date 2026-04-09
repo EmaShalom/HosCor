@@ -1,5 +1,5 @@
 import client from './client'
-import type { Bed, UnitSummary } from '../types'
+import type { Bed, HygieneBed, UnitSummary } from '../types'
 
 export const fetchBedsSummary = async (): Promise<UnitSummary[]> => {
   const res = await client.get('/beds')
@@ -13,6 +13,11 @@ export const fetchUnitBeds = async (unit: string): Promise<Bed[]> => {
 
 export const updateBedState = async (id: number, state: string): Promise<Bed> => {
   const res = await client.patch(`/beds/${id}/state`, { state })
+  return res.data.data
+}
+
+export const fetchHygieneBeds = async (): Promise<HygieneBed[]> => {
+  const res = await client.get('/beds/hygiene')
   return res.data.data
 }
 
